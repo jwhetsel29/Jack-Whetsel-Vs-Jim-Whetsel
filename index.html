@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jim & Jack Whetsel — Two Lives Across Time</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=Oswald:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --parchment:   #f5edd6;
+      --parchment2:  #ede0c0;
+      --dark-brown:  #2c1a0e;
+      --mid-brown:   #5c3d1e;
+      --gold:        #b8860b;
+      --gold-light:  #d4a843;
+      --red:         #8b1a1a;
+      --navy:        #1a2744;
+      --cream:       #faf6ee;
+      --text:        #1e1005;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'EB Garamond', Georgia, serif;
+      background: var(--navy);
+      color: var(--text);
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+    /* ── TOP BANNER ─────────────────────────────────────── */
+    .top-banner {
+      background: var(--dark-brown);
+      color: var(--gold-light);
+      text-align: center;
+      padding: 6px 0;
+      font-family: 'Oswald', sans-serif;
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--gold);
+    }
+
+    /* ── NAV ─────────────────────────────────────────────── */
+    nav {
+      background: var(--navy);
+      border-bottom: 3px solid var(--gold);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: center;
+      gap: 0;
+    }
+    nav a {
+      color: #c8d4e8;
+      text-decoration: none;
+      font-family: 'Oswald', sans-serif;
+      font-size: 13px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 14px 22px;
+      transition: background 0.2s, color 0.2s;
+      border-right: 1px solid rgba(255,255,255,0.1);
+    }
+    nav a:hover { background: var(--gold); color: var(--dark-brown); }
+
+    /* ── HERO ────────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      background:
+        linear-gradient(to bottom, rgba(26,39,68,0.85) 0%, rgba(26,39,68,0.6) 60%, rgba(26,39,68,0.95) 100%),
+        repeating-linear-gradient(
+          45deg,
+          transparent,
+          transparent 2px,
+          rgba(184,134,11,0.03) 2px,
+          rgba(184,134,11,0.03) 4px
+        ),
+        #1a2744;
+      min-height: 500px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 24px 60px;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23b8860b' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .hero-ornament {
+      color: var(--gold);
+      font-size: 28px;
+      letter-spacing: 12px;
+      margin-bottom: 18px;
+      position: relative;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2.4rem, 6vw, 4.5rem);
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.1;
+      position: relative;
+      text-shadow: 0 2px 30px rgba(0,0,0,0.5);
+    }
+    .hero h1 span { color: var(--gold-light); }
+    .hero-sub {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      color: #b0bdd6;
+      font-size: 1.2rem;
+      margin-top: 16px;
+      position: relative;
+    }
+    .hero-divider {
+      width: 180px;
+      height: 2px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+      margin: 28px auto;
+      position: relative;
+    }
+    .hero-divider::after {
+      content: '✦';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: var(--navy);
+      color: var(--gold);
+      padding: 0 8px;
+      font-size: 14px;
+    }
+    .hero-dates {
+      display: flex;
+      gap: 60px;
+      justify-content: center;
+      margin-top: 10px;
+      position: relative;
+    }
+    .hero-date-item { text-align: center; }
+    .hero-date-item .name {
+      font-family: 'Oswald', sans-serif;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold-light);
+    }
+    .hero-date-item .year {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    /* ── SECTIONS ─────────────────────────────────────────── */
+    section { padding: 70px 24px; }
+
+    .section-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: 'Oswald', sans-serif;
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 12px;
+    }
+    .section-rule {
+      width: 80px;
+      height: 3px;
+      background: var(--gold);
+      margin: 0 auto 50px;
+    }
+
+    /* ── INTRO ────────────────────────────────────────────── */
+    #intro {
+      background: var(--parchment);
+    }
+    #intro .section-title { color: var(--dark-brown); }
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+    }
+    .intro-card {
+      background: var(--cream);
+      border: 1px solid #d9c99a;
+      border-top: 4px solid var(--gold);
+      padding: 32px 28px;
+      box-shadow: 0 4px 20px rgba(44,26,14,0.1);
+    }
+    .intro-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: var(--dark-brown);
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #d9c99a;
+    }
+    .intro-card p { color: var(--mid-brown); line-height: 1.8; }
+    .intro-card .tag {
+      display: inline-block;
+      background: var(--navy);
+      color: var(--gold-light);
+      font-family: 'Oswald', sans-serif;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      margin-bottom: 14px;
+    }
+
+    /* ── PAGES SHOWCASE ──────────────────────────────────── */
+    #pages {
+      background: var(--navy);
+    }
+    #pages .section-title { color: #fff; }
+    #pages .section-label { color: var(--gold-light); }
+    .pages-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 24px;
+    }
+    .page-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(184,134,11,0.3);
+      padding: 28px 24px;
+      text-decoration: none;
+      color: #c8d4e8;
+      transition: background 0.25s, border-color 0.25s, transform 0.2s;
+      display: block;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 4px; height: 100%;
+      background: var(--gold);
+      transform: scaleY(0);
+      transition: transform 0.25s;
+      transform-origin: top;
+    }
+    .page-card:hover { background: rgba(184,134,11,0.1); border-color: var(--gold); transform: translateY(-3px); }
+    .page-card:hover::before { transform: scaleY(1); }
+    .page-card .page-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: rgba(184,134,11,0.2);
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+    .page-card h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .page-card p { font-size: 0.88rem; line-height: 1.6; color: #8a9bb5; }
+    .page-card .arrow {
+      display: inline-block;
+      margin-top: 14px;
+      font-size: 0.8rem;
+      color: var(--gold-light);
+      font-family: 'Oswald', sans-serif;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    /* ── TIMELINE ─────────────────────────────────────────── */
+    #timeline {
+      background: var(--parchment2);
+    }
+    #timeline .section-title { color: var(--dark-brown); }
+
+    .timeline-legend {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 50px;
+    }
+    .legend-item { display: flex; align-items: center; gap: 10px; }
+    .legend-dot {
+      width: 14px; height: 14px; border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .legend-dot.jim { background: var(--red); }
+    .legend-dot.jack { background: var(--navy); }
+    .legend-label {
+      font-family: 'Oswald', sans-serif;
+      font-size: 13px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--mid-brown);
+    }
+
+    .timeline {
+      position: relative;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0; bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--gold), var(--mid-brown), var(--gold));
+      transform: translateX(-50%);
+    }
+
+    .tl-item {
+      display: flex;
+      justify-content: flex-end;
+      padding-right: calc(50% + 36px);
+      margin-bottom: 40px;
+      position: relative;
+    }
+    .tl-item.right {
+      justify-content: flex-start;
+      padding-right: 0;
+      padding-left: calc(50% + 36px);
+    }
+
+    .tl-dot {
+      position: absolute;
+      left: 50%;
+      top: 20px;
+      transform: translateX(-50%);
+      width: 16px; height: 16px;
+      border-radius: 50%;
+      border: 3px solid var(--parchment2);
+      z-index: 1;
+    }
+    .tl-item .tl-dot { background: var(--red); }
+    .tl-item.right .tl-dot { background: var(--navy); }
+
+    .tl-card {
+      background: var(--cream);
+      border: 1px solid #d4c090;
+      padding: 18px 20px;
+      max-width: 360px;
+      box-shadow: 0 2px 12px rgba(44,26,14,0.08);
+      position: relative;
+    }
+    .tl-item .tl-card::after {
+      content: '';
+      position: absolute;
+      right: -10px; top: 22px;
+      border: 5px solid transparent;
+      border-left-color: #d4c090;
+    }
+    .tl-item.right .tl-card::after {
+      right: auto; left: -10px;
+      border-left-color: transparent;
+      border-right-color: #d4c090;
+    }
+    .tl-year {
+      font-family: 'Oswald', sans-serif;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .tl-item .tl-year { color: var(--red); }
+    .tl-item.right .tl-year { color: var(--navy); }
+    .tl-card h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      color: var(--dark-brown);
+      margin-bottom: 6px;
+    }
+    .tl-card p { font-size: 0.85rem; color: var(--mid-brown); line-height: 1.6; }
+
+    /* ── QUOTE BANNER ────────────────────────────────────── */
+    .quote-banner {
+      background: var(--dark-brown);
+      padding: 60px 24px;
+      text-align: center;
+    }
+    .quote-banner blockquote {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: clamp(1.3rem, 3vw, 2rem);
+      color: var(--gold-light);
+      max-width: 750px;
+      margin: 0 auto;
+      line-height: 1.5;
+    }
+    .quote-banner cite {
+      display: block;
+      margin-top: 16px;
+      font-family: 'Oswald', sans-serif;
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #7a8a6a;
+      font-style: normal;
+    }
+
+    /* ── FOOTER ──────────────────────────────────────────── */
+    footer {
+      background: #0e1628;
+      border-top: 3px solid var(--gold);
+      padding: 40px 24px;
+      text-align: center;
+      color: #5a6a8a;
+      font-size: 0.85rem;
+    }
+    footer .footer-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: var(--gold-light);
+      margin-bottom: 8px;
+    }
+    footer a { color: var(--gold); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    /* ── RESPONSIVE ──────────────────────────────────────── */
+    @media (max-width: 700px) {
+      .intro-grid { grid-template-columns: 1fr; }
+      nav { flex-wrap: wrap; }
+      nav a { font-size: 11px; padding: 10px 12px; }
+
+      .timeline::before { left: 18px; }
+      .tl-item, .tl-item.right {
+        justify-content: flex-start;
+        padding-left: 50px;
+        padding-right: 0;
+      }
+      .tl-dot { left: 18px; }
+      .tl-item .tl-card::after,
+      .tl-item.right .tl-card::after {
+        right: auto; left: -10px;
+        border-left-color: transparent;
+        border-right-color: #d4c090;
+      }
+      .tl-card { max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-banner">Historical Comparative Study &nbsp;·&nbsp; The 1960s &nbsp;·&nbsp; Jim Whetsel &amp; Jack Whetsel</div>
+
+  <nav>
+    <a href="#intro">Introduction</a>
+    <a href="#comparison">1960s vs 2020s</a>
+    <a href="#museum">Museum</a>
+    <a href="#interview">Interview</a>
+    <a href="#timeline">Timeline</a>
+    <a href="#today">Today</a>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-ornament">— ✦ —</div>
+    <h1>Jim <span>&amp;</span> Jack Whetsel</h1>
+    <div class="hero-divider"></div>
+    <div class="hero-dates">
+      <div class="hero-date-item">
+        <div class="name">Jim Whetsel</div>
+        <div class="year">1960s</div>
+      </div>
+      <div class="hero-date-item">
+        <div class="name">Jack Whetsel</div>
+        <div class="year">Today</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- INTRO -->
+  <section id="intro">
+    <div class="section-inner">
+      <p class="section-label">Introduction</p>
+      <h2 class="section-title">Two Lives, One Connection</h2>
+      <div class="section-rule"></div>
+      <div class="intro-grid">
+        <div class="intro-card">
+          <span class="tag">Historical Figure</span>
+          <h3>Jim Whetsel</h3>
+          <img
+            src="https://lh3.googleusercontent.com/d/1S1NQzk2LmYuKas_JAWKCpYnkuRaTTHLs"
+            alt="Jim Whetsel"
+            style="width:60%; display:block; margin:0 auto 16px; border:2px solid #d4c090;"
+          />
+          <p>
+            Jim Whetsel lived during one of the most turbulent and transformative decades in American history — the 1960s. A time of civil rights movements, the Space Race, the Vietnam War, and a cultural revolution that changed the nation forever. His story is a window into what everyday life looked like during this pivotal era.
+          </p>
+        </div>
+        <div class="intro-card">
+          <span class="tag" style="background:var(--navy);">Present Day</span>
+          <h3>Jack Whetsel</h3>
+          <img
+            src="https://lh3.googleusercontent.com/d/16ygBPVQddGbBJv2vTGdew6tZhjvSFyLM"
+            alt="Jack Whetsel"
+            style="width:60%; display:block; margin:0 auto 16px; border:2px solid #d4c090;"
+          />
+          <p>
+            Jack Whetsel is a student living in the modern era — a world shaped by the very events Jim lived through. By comparing their lives side by side, we can see how much has changed, and how much stays the same. History is not just dates and battles; it lives in the people who experience it.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- 1960s vs 2020s -->
+  <section id="comparison" style="background:var(--parchment); padding:70px 24px;">
+    <div class="section-inner">
+      <p class="section-label">Then &amp; Now</p>
+      <h2 class="section-title" style="color:var(--dark-brown);">The 1960s vs. The 2020s</h2>
+      <div class="section-rule"></div>
+
+      <!-- Column Headers -->
+      <div style="display:grid; grid-template-columns:1fr 60px 1fr; gap:0; max-width:900px; margin:0 auto;">
+
+        <div style="background:var(--red); color:#fff; text-align:center; padding:16px; font-family:'Oswald',sans-serif; font-size:13px; letter-spacing:3px; text-transform:uppercase;">
+          The 1960s — Jim's World
+        </div>
+        <div style="background:var(--dark-brown); display:flex; align-items:center; justify-content:center; color:var(--gold-light); font-weight:900; font-size:1.1rem;">vs</div>
+        <div style="background:var(--navy); color:#fff; text-align:center; padding:16px; font-family:'Oswald',sans-serif; font-size:13px; letter-spacing:3px; text-transform:uppercase;">
+          The 2020s — Jack's World
+        </div>
+
+        <!-- Technology -->
+        <div style="background:var(--cream); border:1px solid #d4c090; border-top:none; padding:20px 22px;">
+          <div style="font-family:'Oswald',sans-serif; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--red); margin-bottom:6px;">Technology</div>
+          <img src="rocket.jpg" alt="1960s NASA rocket launch" style="width:100%; display:block; margin-bottom:12px; border:1px solid #d4c090;" />
+          <p style="color:var(--mid-brown); font-size:0.92rem; line-height:1.7;">Black &amp; white televisions, rotary phones, and transistor radios. NASA's space program was the most advanced technology most Americans had ever witnessed.</p>
+        </div>
+        <div style="background:var(--dark-brown); border-top:none;"></div>
+        <div style="background:var(--cream); border:1px solid #d4c090; border-top:none; padding:20px 22px;">
+          <div style="font-family:'Oswald',sans-serif; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--navy); margin-bottom:6px;">Technology</div>
+          <img src="jacks-tech.jpg" alt="iPhone - Jack's technology" style="width:100%; display:block; margin-bottom:12px; border:1px solid #d4c090;" />
+          <p style="color:var(--mid-brown); font-size:0.92rem; line-height:1.7;">Smartphones, social media, AI, and streaming on demand. More computing power fits in a pocket than existed in the entire world in 1960.</p>
+        </div>
+
+        <!-- Transportation -->
+        <div style="background:#f7f0df; border:1px solid #d4c090; border-top:none; padding:20px 22px;">
+          <div style="font-family:'Oswald',sans-serif; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--red); margin-bottom:6px;">Transportation</div>
+          <img src="jims-car.jpg" alt="Jim Whetsel with his restored 1950 Chevy" style="width:100%; display:block; margin-bottom:12px; border:1px solid #d4c090;" />
+          <p style="color:var(--mid-brown); font-size:0.92rem; line-height:1.7;">Jim bought a used scooter for $200 and a car for $1.00, riding 15–20 miles just to visit a Dairy Queen. Gas cost around 31¢ a gallon.</p>
+        </div>
+        <div style="background:var(--dark-brown); border-top:none;"></div>
+        <div style="background:#f7f0df; border:1px solid #d4c090; border-top:none; padding:20px 22px;">
+          <div style="font-family:'Oswald',sans-serif; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--navy); margin-bottom:6px;">Transportation</div>
+          <img src="jacks-truck.jpg" alt="Jack Whetsel with his 2014 Ford F-150" style="width:100%; display:block; margin-bottom:12px; border:1px solid #d4c090;" />
+          <p style="color:var(--mid-brown); font-size:0.92rem; line-height:1.7;">Jack got a silver 2014 Ford F-150 from his grandpa at 16. Gas costs around $3–4 a gallon, and GPS navigation fits on a phone screen.</p>
+        </div>
+
+        <!-- Work & Money -->
+        <div style="background:var(--cream); border:1px solid #d4c090; border-top:none; padding:20px 22px;">
+          <div style="font-family:'Oswald',sans-serif; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--red); margin-bottom:6px;">Work &amp; Money</div>
+          <img src="jims-work.jpg" alt="Red & White Super Market where Jim worked" style="width:100%; display:block; margin-bottom:12px; border:1px solid #d4c090;" />
+          <p style="color:var(--mid-brown); font-size:0.92rem; line-height:1.7;">Jim sorted glass bottles for 2¢–5¢ each, picked wild strawberries, and baled hay — saving every cent for months to afford a $200 scooter.</p>
+        </div>
+        <div style="background:var(--dark-brown); border-top:none;"></div>
+        <div style="background:var(--cream); border:1px solid #d4c090; border-top:none; padding:20px 22px;">
+          <div style="font-family:'Oswald',sans-serif; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--navy); margin-bottom:6px;">Work &amp; Money</div>
+          <img src="jacks-work.jpg" alt="Jack Whetsel lawn mowing business" style="width:100%; display:block; margin-bottom:12px; border:1px solid #d4c090;" />
+          <p style="color:var(--mid-brown); font-size:0.92rem; line-height:1.7;">Jack runs his own lawn mowing business — 3 to 5 yards at $30 each — depositing earnings straight into a savings account, building toward his future as an electrician.</p>
+        </div>
+
+        <!-- School -->
+        <div style="background:#f7f0df; border:1px solid #d4c090; border-top:none; padding:20px 22px;">
+          <div style="font-family:'Oswald',sans-serif; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--red); margin-bottom:6px;">School</div>
+          <img src="hayes-high.jpg" alt="Hayes High School Delaware Ohio" style="width:100%; display:block; margin-bottom:12px; border:1px solid #d4c090;" />
+          <p style="color:var(--mid-brown); font-size:0.92rem; line-height:1.7;">Hayes High School, Delaware, Ohio. No internet, no calculators — homework meant books and handwriting. Jim graduated in 1963 into a country gripped by the Cold War.</p>
+        </div>
+        <div style="background:var(--dark-brown); border-top:none;"></div>
+        <div style="background:#f7f0df; border:1px solid #d4c090; border-top:none; padding:20px 22px;">
+          <div style="font-family:'Oswald',sans-serif; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--navy); margin-bottom:6px;">School</div>
+          <img src="batavia-high.webp" alt="Batavia High School aerial view" style="width:100%; display:block; margin-bottom:12px; border:1px solid #d4c090;" />
+          <p style="color:var(--mid-brown); font-size:0.92rem; line-height:1.7;">Batavia High School, finishing junior year. Chromebooks, Google Classroom, and online resources — but also harder decisions, like quitting football for his health after sophomore year.</p>
+        </div>
+
+        <!-- Sports & Fitness -->
+        <div style="background:var(--cream); border:1px solid #d4c090; border-top:none; padding:20px 22px;">
+          <div style="font-family:'Oswald',sans-serif; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--red); margin-bottom:6px;">Sports &amp; Fitness</div>
+          <img src="track-team.jpg" alt="Hayes High School Varsity Track Team" style="width:100%; display:block; margin-bottom:12px; border:1px solid #d4c090;" />
+          <p style="color:var(--mid-brown); font-size:0.92rem; line-height:1.7;">Jim ran varsity track at Hayes High School, competing in relays across central Ohio. Physical labor — baling hay, sorting stock — kept him active every day.</p>
+        </div>
+        <div style="background:var(--dark-brown); border-top:none;"></div>
+        <div style="background:var(--cream); border:1px solid #d4c090; border-top:none; padding:20px 22px;">
+          <div style="font-family:'Oswald',sans-serif; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--navy); margin-bottom:6px;">Sports &amp; Fitness</div>
+          <img src="jacks-sport.jpg" alt="Jack Whetsel #74 playing football for Batavia" style="width:70%; display:block; margin:0 auto 12px; border:1px solid #d4c090;" />
+          <p style="color:var(--mid-brown); font-size:0.92rem; line-height:1.7;">Jack played football until making the difficult choice to step away for health reasons. He now hits the gym every week — training on his own terms and his own schedule.</p>
+        </div>
+
+        <!-- The Big World Event -->
+        <div style="background:#f7f0df; border:1px solid #d4c090; border-top:none; padding:20px 22px;">
+          <div style="font-family:'Oswald',sans-serif; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--red); margin-bottom:6px;">World Event They Remember</div>
+          <img src="sputnik.jpg" alt="Sputnik satellite orbiting Earth" style="width:100%; display:block; margin-bottom:12px; border:1px solid #d4c090;" />
+          <p style="color:var(--mid-brown); font-size:0.92rem; line-height:1.7;">Jim was in school the day the Soviets launched Sputnik into orbit in 1957 — the shot heard around the world that started the Space Race and changed America forever.</p>
+        </div>
+        <div style="background:var(--dark-brown); border-top:none;"></div>
+        <div style="background:#f7f0df; border:1px solid #d4c090; border-top:none; padding:20px 22px;">
+          <div style="font-family:'Oswald',sans-serif; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--navy); margin-bottom:6px;">World Event They Remember</div>
+          <img src="charlie-kirk.jpg" alt="Charlie Kirk" style="width:100%; display:block; margin-bottom:12px; border:1px solid #d4c090;" />
+          <p style="color:var(--mid-brown); font-size:0.92rem; line-height:1.7;">Jack remembers the assassination of Charlie Kirk in 2025 — a shocking moment that stopped the country, much like Sputnik did for Jim's generation, proving that history keeps happening whether you're ready or not.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- MUSEUM -->
+  <section id="museum" style="background:#111827; padding:70px 24px;">
+    <div class="section-inner">
+      <p class="section-label" style="color:var(--gold-light);">Photo Archive</p>
+      <h2 class="section-title" style="color:#fff;">Museum of Photographs</h2>
+      <div class="section-rule"></div>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)); gap:32px;">
+
+        <!-- PHOTO 1 — Senior Portrait -->
+        <div style="background:#1e293b; border:1px solid rgba(184,134,11,0.3); overflow:hidden;">
+          <div style="overflow:hidden; background:#0f172a; display:flex; align-items:center; justify-content:center; min-height:320px;">
+            <img src="senior-photo.jpg" alt="Jim Whetsel Senior Photo 1963" style="width:100%; display:block; filter:sepia(20%);" />
+          </div>
+          <div style="padding:20px 18px 22px;">
+            <div style="font-family:'Oswald',sans-serif; font-size:10px; letter-spacing:2.5px; text-transform:uppercase; color:var(--gold-light); margin-bottom:8px;">1963 · Delaware, Ohio</div>
+            <h4 style="font-family:'Playfair Display',serif; font-size:1.05rem; color:#fff; margin-bottom:8px;">Jim Whetsel — Senior Portrait</h4>
+            <p style="font-size:0.85rem; color:#8a9bb5; line-height:1.6;">Jim's senior photo taken at Hayes High School, 1963, by Cubberly Studio in Delaware, Ohio. The same year he graduated and stepped into a country on the edge of enormous change.</p>
+          </div>
+        </div>
+
+        <!-- PHOTO 2 — Cushman Scooter -->
+        <div style="background:#1e293b; border:1px solid rgba(184,134,11,0.3); overflow:hidden;">
+          <div style="overflow:hidden; background:#0f172a; display:flex; align-items:center; justify-content:center; min-height:320px;">
+            <img src="jims-scooter.jpg" alt="Jim Whetsel on his Cushman Pacemaker scooter" style="width:100%; display:block; filter:sepia(20%);" />
+          </div>
+          <div style="padding:20px 18px 22px;">
+            <div style="font-family:'Oswald',sans-serif; font-size:10px; letter-spacing:2.5px; text-transform:uppercase; color:var(--gold-light); margin-bottom:8px;">Age 14 · Delaware, Ohio</div>
+            <h4 style="font-family:'Playfair Display',serif; font-size:1.05rem; color:#fff; margin-bottom:8px;">Jim's Cushman Pacemaker</h4>
+            <p style="font-size:0.85rem; color:#8a9bb5; line-height:1.6;">Jim at age 14 on his red and white Cushman Pacemaker motor scooter — bought for $200 with money saved sorting soda bottles at the family store. He rode it 15–20 miles with friends Kenny Wheeler and Rodney Goad just to visit the Dairy Queen in Richwood, Ohio.</p>
+          </div>
+        </div>
+
+        <!-- PHOTO 3 — Family Grocery Store -->
+        <div style="background:#1e293b; border:1px solid rgba(184,134,11,0.3); overflow:hidden;">
+          <div style="overflow:hidden; background:#0f172a; display:flex; align-items:center; justify-content:center; min-height:320px;">
+            <img src="family-store.jpg" alt="Red & White Super Market" style="width:100%; display:block;" />
+          </div>
+          <div style="padding:20px 18px 22px;">
+            <div style="font-family:'Oswald',sans-serif; font-size:10px; letter-spacing:2.5px; text-transform:uppercase; color:var(--gold-light); margin-bottom:8px;">Late 1950s · Delaware, Ohio</div>
+            <h4 style="font-family:'Playfair Display',serif; font-size:1.05rem; color:#fff; margin-bottom:8px;">Red &amp; White Super Market</h4>
+            <p style="font-size:0.85rem; color:#8a9bb5; line-height:1.6;">Jim's first job was here — his father's Red &amp; White Super Market, the first self-serve grocery store in Delaware, Ohio. Jim sorted returned glass soda bottles in the back, earning 2¢ to 5¢ each and saving every cent.</p>
+          </div>
+        </div>
+
+        <!-- PHOTO 4 — Girlfriend -->
+        <div style="background:#1e293b; border:1px solid rgba(184,134,11,0.3); overflow:hidden;">
+          <div style="overflow:hidden; background:#0f172a; display:flex; align-items:center; justify-content:center; min-height:320px;">
+            <img src="jims-girlfriend.jpg" alt="Jim Whetsel and his first girlfriend" style="width:100%; display:block; filter:sepia(15%);" />
+          </div>
+          <div style="padding:20px 18px 22px;">
+            <div style="font-family:'Oswald',sans-serif; font-size:10px; letter-spacing:2.5px; text-transform:uppercase; color:var(--gold-light); margin-bottom:8px;">Late 1950s · Delaware, Ohio</div>
+            <h4 style="font-family:'Playfair Display',serif; font-size:1.05rem; color:#fff; margin-bottom:8px;">Jim &amp; His First Girlfriend</h4>
+            <p style="font-size:0.85rem; color:#8a9bb5; line-height:1.6;">A candid snapshot of Jim and his first girlfriend during his teenage years in Delaware, Ohio — a glimpse into everyday life and friendship during the late 1950s.</p>
+          </div>
+        </div>
+
+        <!-- PHOTO 5 — Drawing -->
+        <div style="background:#1e293b; border:1px solid rgba(184,134,11,0.3); overflow:hidden;">
+          <div style="overflow:hidden; background:#0f172a; display:flex; align-items:center; justify-content:center; min-height:320px;">
+            <img src="jims-drawing.jpg" alt="Jim Whetsel with his drawing of a classmate" style="width:100%; display:block;" />
+          </div>
+          <div style="padding:20px 18px 22px;">
+            <div style="font-family:'Oswald',sans-serif; font-size:10px; letter-spacing:2.5px; text-transform:uppercase; color:var(--gold-light); margin-bottom:8px;">Early 1960s · Delaware, Ohio</div>
+            <h4 style="font-family:'Playfair Display',serif; font-size:1.05rem; color:#fff; margin-bottom:8px;">A Portrait in Memory</h4>
+            <p style="font-size:0.85rem; color:#8a9bb5; line-height:1.6;">Jim stands beside a painting he created of a classmate who passed away during high school. The artwork is a testament to Jim's artistic talent — the same gift that would later lead him to the Columbus College of Art and Design and a career in industrial design.</p>
+          </div>
+        </div>
+
+        <!-- PHOTO 6 — Track Team -->
+        <div style="background:#1e293b; border:1px solid rgba(184,134,11,0.3); overflow:hidden;">
+          <div style="overflow:hidden; background:#0f172a; display:flex; align-items:center; justify-content:center; min-height:320px;">
+            <img src="track-team.jpg" alt="Hayes High School Varsity Track Team 1963" style="width:100%; display:block; filter:sepia(20%);" />
+          </div>
+          <div style="padding:20px 18px 22px;">
+            <div style="font-family:'Oswald',sans-serif; font-size:10px; letter-spacing:2.5px; text-transform:uppercase; color:var(--gold-light); margin-bottom:8px;">1963 · Hayes High School</div>
+            <h4 style="font-family:'Playfair Display',serif; font-size:1.05rem; color:#fff; margin-bottom:8px;">Varsity Track Team</h4>
+            <p style="font-size:0.85rem; color:#8a9bb5; line-height:1.6;">Members of the Hayes High School Varsity Track Team, 1963 — as printed in the Gazette. Jim Whetsel is listed among the members in the back row. The team competed in relays and triangular meets across central Ohio.</p>
+          </div>
+        </div>
+
+        <!-- PHOTO 7 — Rusty Car -->
+        <div style="background:#1e293b; border:1px solid rgba(184,134,11,0.3); overflow:hidden;">
+          <div style="overflow:hidden; background:#0f172a; display:flex; align-items:center; justify-content:center; min-height:320px;">
+            <img src="jims-rusty-car.jpg" alt="Jim Whetsel with his rusted 1950 Chevy" style="width:100%; display:block; filter:sepia(20%);" />
+          </div>
+          <div style="padding:20px 18px 22px;">
+            <div style="font-family:'Oswald',sans-serif; font-size:10px; letter-spacing:2.5px; text-transform:uppercase; color:var(--gold-light); margin-bottom:8px;">Age 15 · Delaware, Ohio</div>
+            <h4 style="font-family:'Playfair Display',serif; font-size:1.05rem; color:#fff; margin-bottom:8px;">The $1.00 Chevy — Before the Restoration</h4>
+            <p style="font-size:0.85rem; color:#8a9bb5; line-height:1.6;">Jim at age 15 with his 1950 Chevrolet the day he got it — completely covered in rust. His Uncle Earl sold it to him for exactly $1.00. What looked like a wreck became a project, and Jim restored it entirely by hand in his grandfather's open garage.</p>
+          </div>
+        </div>
+
+        <!-- PHOTO 8 — Finished Car -->
+        <div style="background:#1e293b; border:1px solid rgba(184,134,11,0.3); overflow:hidden;">
+          <div style="overflow:hidden; background:#0f172a; display:flex; align-items:center; justify-content:center; min-height:320px;">
+            <img src="jims-car.jpg" alt="Jim Whetsel with his restored 1950 Chevy" style="width:100%; display:block;" />
+          </div>
+          <div style="padding:20px 18px 22px;">
+            <div style="font-family:'Oswald',sans-serif; font-size:10px; letter-spacing:2.5px; text-transform:uppercase; color:var(--gold-light); margin-bottom:8px;">Early 1960s · Delaware, Ohio</div>
+            <h4 style="font-family:'Playfair Display',serif; font-size:1.05rem; color:#fff; margin-bottom:8px;">The Finished 1950 Chevy</h4>
+            <p style="font-size:0.85rem; color:#8a9bb5; line-height:1.6;">Jim stands proudly beside his fully restored 1950 Chevrolet — the same car his Uncle Earl sold him for exactly $1.00. Working out of his grandfather's open garage with a drill, a sander, and junkyard parts, Jim brought it back to life completely on his own.</p>
+          </div>
+        </div>
+
+        <!-- PHOTO 9 — Prom -->
+        <div style="background:#1e293b; border:1px solid rgba(184,134,11,0.3); overflow:hidden;">
+          <div style="overflow:hidden; background:#0f172a; display:flex; align-items:center; justify-content:center; min-height:320px;">
+            <img src="jims-prom.jpg" alt="Jim Whetsel Senior Prom" style="width:100%; display:block; filter:sepia(15%);" />
+          </div>
+          <div style="padding:20px 18px 22px;">
+            <div style="font-family:'Oswald',sans-serif; font-size:10px; letter-spacing:2.5px; text-transform:uppercase; color:var(--gold-light); margin-bottom:8px;">1963 · Hayes High School</div>
+            <h4 style="font-family:'Playfair Display',serif; font-size:1.05rem; color:#fff; margin-bottom:8px;">Senior Prom</h4>
+            <p style="font-size:0.85rem; color:#8a9bb5; line-height:1.6;">Jim Whetsel at his senior prom — he is the young man on the far left in the white jacket. A classic 1960s prom night at Hayes High School, Delaware, Ohio.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- AUDIO INTERVIEW -->
+  <section id="interview" style="background:var(--parchment); padding:70px 24px;">
+    <div class="section-inner">
+      <p class="section-label">Primary Source</p>
+      <h2 class="section-title" style="color:var(--dark-brown);">Audio Interview — Jim Whetsel</h2>
+      <div class="section-rule"></div>
+      <div style="max-width:680px; margin:0 auto; text-align:center;">
+        <p style="color:var(--mid-brown); font-style:italic; margin-bottom:28px; font-size:1.05rem;">
+          Listen to Jim Whetsel speak in his own words about growing up in Delaware, Ohio during the 1960s.
+        </p>
+        <div style="border:2px solid #d4c090; background:var(--cream); padding:28px; box-shadow:0 4px 20px rgba(44,26,14,0.1);">
+          <iframe
+            src="https://drive.google.com/file/d/17hdMSphPdfjxkLIPHORkCTURpeciNMT6/preview"
+            width="100%"
+            height="80"
+            allow="autoplay"
+            style="border:none; display:block;"
+          ></iframe>
+        </div>
+        <p style="margin-top:14px; font-size:0.82rem; color:#9a8a6a; font-family:'Oswald',sans-serif; letter-spacing:1px; text-transform:uppercase;">
+          Recorded Interview · Jim Whetsel · Delaware, Ohio
+        </p>
+        <a href="https://docs.google.com/document/d/17d_GF7GaSTx7nc-LLzhLvqT5UezMVOSmVID-TeGzM7M/edit?usp=sharing" target="_blank" style="display:inline-block; margin-top:16px; background:var(--navy); color:var(--gold-light); font-family:'Oswald',sans-serif; font-size:12px; letter-spacing:2px; text-transform:uppercase; padding:10px 24px; border:1px solid var(--gold); text-decoration:none;">
+          Read Full Transcript →
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- TIMELINE -->
+  <section id="timeline">
+    <div class="section-inner">
+      <p class="section-label">Comparative Timeline</p>
+      <h2 class="section-title">A Life Side by Side</h2>
+      <div class="section-rule"></div>
+
+      <div class="timeline-legend">
+        <div class="legend-item">
+          <div class="legend-dot jim"></div>
+          <span class="legend-label">Jim Whetsel</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot jack"></div>
+          <span class="legend-label">Jack Whetsel</span>
+        </div>
+      </div>
+
+      <div class="timeline">
+
+        <!-- JIM 1 -->
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <div class="tl-year">Late 1950s — Jim</div>
+            <h4>Working at the Family Grocery Store</h4>
+            <p>Jim begins working at his father's "Red and White" grocery store — the first self-serve store in Delaware, Ohio. His main job is sorting returned glass soda bottles (Crown, Pepsi, Coke) for 2¢ to 5¢ each. He saves every nickel and dime toward a motor scooter.</p>
+          </div>
+        </div>
+
+        <!-- JACK 1 -->
+        <div class="tl-item right">
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <div class="tl-year">Early 2020s — Jack</div>
+            <h4>Running His Own Lawn Mowing Business</h4>
+            <p>Jack starts his own lawn mowing business, taking on 3–5 yards and charging $30 a lawn. Every dollar he earns goes straight into his savings account — the same hustle Jim had sorting bottles for nickels and dimes decades earlier.</p>
+          </div>
+        </div>
+
+        <!-- JIM 2 -->
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <div class="tl-year">Late 1950s — Jim</div>
+            <h4>Odd Jobs &amp; Sputnik Launches Into the Sky</h4>
+            <p>In his spare time Jim picks wild strawberries along the railroad tracks and helps local farmers bale hay. At school one day, news breaks that the Soviet Union has launched Sputnik into orbit — a moment Jim never forgets, signaling the start of the Space Race.</p>
+          </div>
+        </div>
+
+        <!-- JACK 2 -->
+        <div class="tl-item right">
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <div class="tl-year">2025 — Jack</div>
+            <h4>Remembering the Assassination of Charlie Kirk</h4>
+            <p>Just as Jim was at school when Sputnik launched and shook the country, Jack remembers the moment in 2025 when Charlie Kirk was assassinated — a jarring event that, like so many before it, reminded a generation that history happens whether you're ready for it or not.</p>
+          </div>
+        </div>
+
+        <!-- JIM 3 -->
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <div class="tl-year">Age 14 — Jim</div>
+            <h4>The Red &amp; White Cushman Pacemaker</h4>
+            <p>At 14, Jim qualifies for a scooter license (restricted to under five brake horsepower). All those saved nickels pay off: he buys a used red and white Cushman Pacemaker for $200. With friends Kenny Wheeler and Rodney Goad, he rides 15–20 miles to Richwood, Ohio just to visit the Dairy Queen and pick up parts.</p>
+          </div>
+        </div>
+
+        <!-- JACK 3 -->
+        <div class="tl-item right">
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <div class="tl-year">Age 16 — Jack</div>
+            <h4>A Silver F-150 &amp; His First License</h4>
+            <p>At 16, Jack earns his driver's license — and his grandpa gifts him a silver 2014 Ford F-150 as his first car. He drives it around town, heads to the gym every week, and meets up with friends. Just like Jim's Chevy, the truck becomes a symbol of independence.</p>
+          </div>
+        </div>
+
+        <!-- JIM 4 -->
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <div class="tl-year">Age 15 — Jim</div>
+            <h4>A 1950 Chevy for One Dollar</h4>
+            <p>Uncle Earl can no longer drive due to health issues and sells Jim his 1950 Chevrolet for exactly $1.00. It is one of the most meaningful transactions of Jim's young life.</p>
+          </div>
+        </div>
+
+        <!-- JACK 4 -->
+        <div class="tl-item right">
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <div class="tl-year">Mid 2020s — Jack</div>
+            <h4>The Hardest Decision: Quitting Football</h4>
+            <p>After his sophomore season, Jack makes one of the toughest calls of his life — walking away from football for health reasons. It takes courage to choose long-term wellbeing over a sport he loves, and the decision shapes who he becomes.</p>
+          </div>
+        </div>
+
+        <!-- JIM 5 -->
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <div class="tl-year">Early 1960s — Jim</div>
+            <h4>Restoring the Chevy in Grandfather's Garage</h4>
+            <p>Working in his grandfather's open garage, Jim restores the 1950 Chevy by hand — armed with only a drill, a sander attachment, and junkyard parts. The project teaches him patience, mechanical skill, and the satisfaction of building something with his own hands.</p>
+          </div>
+        </div>
+
+        <!-- JACK 5 -->
+        <div class="tl-item right">
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <div class="tl-year">Mid 2020s — Jack</div>
+            <h4>Building a Routine: Gym, Truck &amp; Friends</h4>
+            <p>With his F-150 and his license, Jack builds a rhythm — hitting the gym every week, driving around town, and spending time with his friends. Where Jim's independence was built on a scooter and junkyard parts, Jack's is built on early mornings and personal discipline.</p>
+          </div>
+        </div>
+
+        <!-- JIM 6 -->
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <div class="tl-year">Early 1960s — Jim</div>
+            <h4>A Visit That Changes Everything</h4>
+            <p>Uncertain about his future, a friend takes Jim to the Columbus College of Art and Design. Seeing the industrial design models on display, something clicks — he wants to design cars and products. That one visit sets the course for his entire career.</p>
+          </div>
+        </div>
+
+        <!-- JACK 6 -->
+        <div class="tl-item right">
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <div class="tl-year">Present — Jack</div>
+            <h4>A Path Forward: Electrician Internship</h4>
+            <p>Just as Jim stood in that Columbus design school and saw his future, Jack is now working out how to land an electrician internship. A trade that is hands-on, skilled, and built to last — a different path than Jim's, but the same drive to build something real.</p>
+          </div>
+        </div>
+
+        <!-- JIM 7 -->
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <div class="tl-year">1963 — Jim</div>
+            <h4>Graduation from Hayes High School</h4>
+            <p>Jim graduates from Hayes High School in 1963 — the same year John F. Kennedy is assassinated and the country is gripped by upheaval. He steps into adulthood at one of the most electric and unsettled moments in American history.</p>
+          </div>
+        </div>
+
+        <!-- JACK 7 -->
+        <div class="tl-item right">
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <div class="tl-year">2026 — Jack</div>
+            <h4>Junior Year at Batavia High School</h4>
+            <p>Jack is finishing his junior year at Batavia High School. The next chapter is close — just as Jim walked across the stage in 1963 and stepped into an uncertain world, Jack is approaching that same threshold, with his own version of the future waiting on the other side.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- TODAY -->
+  <section id="today" style="background:var(--dark-brown); padding:70px 24px;">
+    <div class="section-inner">
+      <p class="section-label" style="color:var(--gold-light);">Then &amp; Now</p>
+      <h2 class="section-title" style="color:#fff;">Jim Today — 80th Birthday</h2>
+      <div class="section-rule"></div>
+      <div style="max-width:720px; margin:0 auto; text-align:center;">
+        <img
+          src="jim-80th-birthday.jpg"
+          alt="Jim Whetsel at his 80th birthday with all his grandkids"
+          style="width:100%; display:block; border:4px solid var(--gold); box-shadow:0 8px 40px rgba(0,0,0,0.5); margin-bottom:28px;"
+        />
+        <p style="font-family:'Playfair Display',serif; font-style:italic; font-size:1.15rem; color:#c8d4e8; line-height:1.8; margin-bottom:16px;">
+          Jim Whetsel at his 80th birthday celebration, surrounded by all of his grandchildren. The boy who sorted soda bottles for nickels, rode a scooter 20 miles for a Dairy Queen, and fixed a rusty Chevy for a dollar — grew into a grandfather whose story spans generations.
+        </p>
+        <p style="font-family:'Oswald',sans-serif; font-size:11px; letter-spacing:3px; text-transform:uppercase; color:var(--gold-light);">
+          80th Birthday · Jim Whetsel & His Grandchildren
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-title">Jim &amp; Jack Whetsel — The 1960s</div>
+    <p style="margin-top:8px;">A historical comparative study &nbsp;·&nbsp; <a href="https://sites.google.com/bps101.net/jim-whetsel-jack-whetsel-60s-v/intro-page" target="_blank">View Google Site</a></p>
+  </footer>
+
+</body>
+</html>
